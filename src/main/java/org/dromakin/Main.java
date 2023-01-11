@@ -36,10 +36,6 @@ public class Main {
         Path saveGameDir = Paths.get(gamePath.toString(), SAVE_GAME_DIR);
         logger.info("Get savegames dir path: {}", saveGameDir);
 
-//        Path tempDir = Paths.get(gamePath.toString(), TEMP_DIR);
-//        logger.info("Get temp dir path: {}", tempDir);
-//        Files.createDirectories(tempDir);
-
         // Games/src
         Path mainDir = Paths.get(srcDir.toString(), MAIN_DIR);
         logger.info("Get main dir path: {}", mainDir);
@@ -120,13 +116,6 @@ public class Main {
             throw new RuntimeException("Can't create vector dir with path: " + iconsPath);
         }
         logger.info(CREATED_DIR, fullDir);
-
-        // Games/temp
-//        Path tempPath = Paths.get(tempDir.toString(), TEMP_FILE);
-//        System.out.println(tempPath);
-//
-//        Files.createFile(tempPath);
-
 
     }
 }
