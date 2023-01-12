@@ -8,7 +8,6 @@
  * author - dromakin
  * maintainer - dromakin
  * version - 2023.01.11
- * copyright - Echelon Inc. 2023
  */
 
 package org.dromakin;
