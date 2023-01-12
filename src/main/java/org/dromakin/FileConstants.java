@@ -17,7 +17,7 @@ public interface FileConstants {
     String GAME_DIR = "Games";
     String SRC_DIR = "src";
     String RES_DIR = "res";
-    String SAVE_GAME_DIR = "savegame";
+    String SAVE_GAME_DIR = "savegames";
     String TEMP_DIR = "temp";
     String MAIN_DIR = "main";
     String TEST_DIR = "test";
