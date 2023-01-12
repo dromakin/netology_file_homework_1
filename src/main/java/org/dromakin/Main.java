@@ -36,11 +36,19 @@ public class Main {
         Path saveGameDir = Paths.get(gamePath.toString(), SAVE_GAME_DIR);
         logger.info("Get savegames dir path: {}", saveGameDir);
 
+        Path fullDir;
+        try {
+            fullDir = Files.createDirectories(saveGameDir);
+        } catch (IOException e) {
+            logger.error(e.getMessage(), e);
+            throw new RuntimeException("Can't create savegames dir with path: " + saveGameDir);
+        }
+        logger.info(CREATED_DIR, saveGameDir);
+
         // Games/src
         Path mainDir = Paths.get(srcDir.toString(), MAIN_DIR);
         logger.info("Get main dir path: {}", mainDir);
 
-        Path fullDir = null;
         try {
             fullDir = Files.createDirectories(mainDir);
         } catch (IOException e) {
