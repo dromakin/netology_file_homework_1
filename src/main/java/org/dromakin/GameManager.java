@@ -33,7 +33,6 @@ public class GameManager {
     private static final String CREATED_FILE = "Created file: {}";
 
     private Path gamePath;
-    private Path saveGameDir;
 
     public GameManager() {
         // no instances
@@ -87,8 +86,8 @@ public class GameManager {
         Path resDir = Paths.get(gamePath.toString(), RES_DIR);
         logger.info("Get res dir path: {}", resDir);
 
-        this.saveGameDir = Paths.get(gamePath.toString(), SAVE_GAME_DIR);
-        logger.info("Get savegames dir path: {}", this.saveGameDir);
+        Path saveGameDir = Paths.get(gamePath.toString(), SAVE_GAME_DIR);
+        logger.info("Get savegames dir path: {}", saveGameDir);
 
         Path fullDir;
         try {
@@ -98,6 +97,28 @@ public class GameManager {
             throw new GameManagerException("Can't create savegames dir with path: " + saveGameDir);
         }
         logger.info(CREATED_DIR, saveGameDir);
+
+        Path tempDir = Paths.get(gamePath.toString(), TEMP_DIR);
+        logger.info("Get temp dir path: {}", tempDir);
+
+        try {
+            fullDir = Files.createDirectories(tempDir);
+        } catch (IOException e) {
+            logger.error(e.getMessage(), e);
+            throw new GameManagerException("Can't create temp dir with path: " + tempDir);
+        }
+        logger.info(CREATED_DIR, tempDir);
+
+        Path tempFilePath = Paths.get(tempDir.toString(), TEMP_FILE);
+        logger.info("Get temp.txt file path: {}", tempFilePath);
+
+        try {
+            fullDir = Files.createFile(tempFilePath);
+        } catch (IOException e) {
+            logger.error(e.getMessage(), e);
+            throw new GameManagerException("Can't create temp.txt with path: " + tempFilePath);
+        }
+        logger.info(CREATED_FILE, tempFilePath);
 
         // Games/src
         Path mainDir = Paths.get(srcDir.toString(), MAIN_DIR);
